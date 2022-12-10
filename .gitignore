@@ -1,0 +1,9 @@
+# Node Modules
+node_modules
+
+# README file
+README.md
+
+# VSCode
+.vscode
+.history
