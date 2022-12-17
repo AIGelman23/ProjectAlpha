@@ -1,6 +1,7 @@
 import React from "react";
-import { Text, Pressable, StyleSheet } from "react-native";
+import { Text, Pressable, SafeAreaView, StyleSheet } from "react-native";
 import { Wrapper } from "../../styles/Default";
+
 
 export const PhotoScreen = ({ route, navigation }) => {
   return (
@@ -11,7 +12,6 @@ export const PhotoScreen = ({ route, navigation }) => {
 
 export const ProfileScreen = ({ route, navigation }) => {
  const { user } = route.params;
-  
   return (
     <Wrapper>
       <Text style={styles.text}>This is the profile of {user}. </Text>
@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
-    color: "red",
+    color: "white",
   },
 });

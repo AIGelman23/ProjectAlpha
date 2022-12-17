@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 export default AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator >
+      <Stack.Navigator>
         <Stack.Screen 
           name="TabNavigator" 
           component={TabNavigator} 

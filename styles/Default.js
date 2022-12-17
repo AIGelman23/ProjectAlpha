@@ -6,6 +6,5 @@ export const Wrapper = styled.View`
     justify-content: 'center';
     flex: 1;
     padding: 50px;
-    background-color: black;
+    background-color: white;
 `;
-
