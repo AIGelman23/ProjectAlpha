@@ -1,8 +1,15 @@
-import * as React from "react";
-import { PhotoScreen, ProfileScreen } from "./screens/Screens";
+import React from "react";
+import { StyleSheet, Animated, Easing } from "react-native";
+import { Header } from "../styles/Default";
+import { HomeScreen } from "./screens/HomeScreen";
+import { PhotoScreen } from "./screens/PhotoScreen";
+import { SettingsScreen } from "./screens/SettingsScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FontAwesome, AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
+import { getHeaderTitle } from "@react-navigation/elements";
+
+// ..
 
 const Tab = createBottomTabNavigator();
 
@@ -10,36 +17,60 @@ export const TabNavigator = (props) => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        // header: ({ navigation, route, options }) => {
+        //   const title = getHeaderTitle(options, route.name);
+          
+        //   console.log(options.headerStyle);
+        //   console.log(title);
+
+        //   return <Header title={title} style={options.headerStyle} />;
+        // },
+        tabBarIcon: ({ focus, focused, color, size }) => {
           let iconName;
 
-          if (route.name === "Photos") {
-            iconName = "photo";
-            size = 30;
-
-            return <FontAwesome name={iconName} size={size} color={color} />;
-          } else if (route.name === "Profile") {
-
-            iconName = "profile";
-            size = 30;
-            return <AntDesign name={iconName} size={size} color={color} />;
+          switch (route.name) {
+            case "Home": {
+              iconName = "home-outline";
+              break;
+            }
+            case "Photos": {
+              iconName = "albums-outline";
+              break;
+            }
+            case "Settings": {
+              iconName = "settings-outline";
+              break;
+            }
           }
+
+          return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarShowLabel: false,
+        tabBarBackground: () => (
+          <BlurView
+            tint="dark"
+            intensity={100}
+            style={StyleSheet.absoluteFill}
+          />
+        ),
+        headerStyle: {
+          backgroundColor: "gray",
+        },
+        headerTintColor: "#fff",
         tabBarStyle: {
           position: "absolute",
-          borderTopColor: "#666666",
+          borderTopColor: "transparent",
           backgroundColor: "transparent",
         },
-        tabBarBackground: () => <BlurView tint="light" intensity={100} />,
-        tabBarActiveTintColor: "blue",
+        tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Photos" component={PhotoScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Home' }}/>
+      <Tab.Screen name="Photos" component={PhotoScreen} options={{ title: 'Photos'}}/>
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Settings"
+        component={SettingsScreen}
+        options={{ title: 'Settings' }}
         initialParams={{ user: "jane" }}
       />
     </Tab.Navigator>
