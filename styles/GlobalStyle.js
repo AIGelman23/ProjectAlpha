@@ -1,22 +1,19 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 
-export const Wrapper = styled.SafeAreaView`
+export const SafeAreaView = styled.SafeAreaView`
   flex: 1;
-
-  background-color: white;
+  background-color: #fff;
 `;
 
 export const Card = styled.View`
   background-color: #f8f8f8;
-  margin-bottom: 20px;
-  border-radius: 30px;
+  border-radius: 35px;
   padding: 20px;
-  margin: 20px;
-  shadow-opacity: 0.2;
+  margin: 30px;
+  shadow-opacity: 0.3;
   shadow-radius: 1px;
-  shadow-color: black;
+  shadow-color: #000;
   shadow-offset: 0px 0px;
-  
 `;
 
 export const PostContainer = styled.View`
@@ -25,17 +22,18 @@ export const PostContainer = styled.View`
 `;
 
 export const PostText = styled.Text`
-  font-size: 14px;
   padding-left: 15px;
   padding-right: 15px;
+  font-family: 'OpenSans-Regular';
+  font-size: 14px;
 `;
 
 export const PostImg = styled.Image`
-  width: 100%; 
-  height: 250px; 
-  margin-top: 15px; 
+  width: 100%;
+  height: 250px;
+  margin-top: 15px;
 `;
 
 export const Header = styled.View`
   height: 100px;
-  `;
+`;

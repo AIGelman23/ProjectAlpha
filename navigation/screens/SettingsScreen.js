@@ -1,14 +1,14 @@
 import React from "react";
-import { Text, Pressable, SafeAreaView, StyleSheet } from "react-native";
-import { Wrapper } from "../../styles/Default";
+import { Text, StyleSheet } from "react-native";
+import { SafeAreaView } from "../../styles/GlobalStyle";
 
 
 export const SettingsScreen = ({ route, navigation }) => {
- const { user } = route.params;
+  const { user } = route.params;
   return (
-    <Wrapper>
+    <SafeAreaView>
       <Text style={styles.text}>This is the profile of {user}. </Text>
-    </Wrapper>
+    </SafeAreaView>
   );
 };
 

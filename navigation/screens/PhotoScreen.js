@@ -1,7 +1,6 @@
 import React from "react";
-import { Text, Pressable, SafeAreaView, StyleSheet } from "react-native";
-import { Wrapper } from "../../styles/Default";
+import { SafeAreaView } from "../../styles/GlobalStyle";
 
 export const PhotoScreen = ({ route, navigation }) => {
-  return <Wrapper></Wrapper>;
+  return <SafeAreaView></SafeAreaView>;
 };

@@ -1,15 +1,12 @@
 import React from "react";
 import { StyleSheet, Animated, Easing } from "react-native";
-import { Header } from "../styles/Default";
+import { Header } from "../styles/GlobalStyle";
 import { HomeScreen } from "./screens/HomeScreen";
 import { PhotoScreen } from "./screens/PhotoScreen";
 import { SettingsScreen } from "./screens/SettingsScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
-import { getHeaderTitle } from "@react-navigation/elements";
-
-// ..
 
 const Tab = createBottomTabNavigator();
 

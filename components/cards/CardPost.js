@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView } from "react-native";
-import { Card, PostContainer, PostImg, PostText } from "../../styles/Default";
+import { Card, PostContainer, PostImg, PostText } from "../../styles/GlobalStyle";
 
 export const CardPost = ({ post }) => {
   console.log(JSON.stringify(post));
