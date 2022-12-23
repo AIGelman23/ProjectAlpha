@@ -9,7 +9,7 @@ export const Card = styled.View`
   background-color: #f8f8f8;
   border-radius: 35px;
   padding: 20px;
-  margin: 30px;
+  margin: 20px;
   shadow-opacity: 0.3;
   shadow-radius: 1px;
   shadow-color: #000;
