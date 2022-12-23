@@ -1,8 +1,7 @@
-import React, { useCallback} from "react";
+import React from "react";
 import { FlatList, Text } from "react-native";
 import { SafeAreaView } from "../../styles/GlobalStyle";
 import { CardPost } from "../../components/cards/CardPost";
-import { useFonts } from "expo-font";
 
 const Posts = [
   {
@@ -33,20 +32,6 @@ const Posts = [
 ];
 
 export const HomeScreen = ({ route, navigation }) => {
-
-  const [fontsLoaded] = useFonts({
-    'OpenSans-Regular': require('../../assets/fonts/OpenSans-Regular.ttf'),
-  });
-
-  useCallback(async () => {
-    if (fontsLoaded) {
-      console.log('fontsLoaded:');
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   return (
     <SafeAreaView>
