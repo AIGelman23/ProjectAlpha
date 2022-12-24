@@ -8,6 +8,8 @@ export const InputField = ({
   keyboardType,
   fieldButtonLabel,
   fieldButtonFunction,
+  value,
+  onChangeText,
 }) => {
   return (
       <View
@@ -27,13 +29,17 @@ export const InputField = ({
             keyboardType={keyboardType}
             style={{ flex: 1, paddingVertical: 0 }}
             secureTextEntry={true}
+            value={value}
+            onChangeText={onChangeText}
           />
         ) : (
           <TextInput
             placeholder={label}
             keyboardType={keyboardType}
             style={{ flex: 1, paddingVertical: 0 }}
-          ></TextInput>
+            value={value}
+            onChangeText={onChangeText}
+          />
         )}
         <TouchableOpacity onPress={fieldButtonFunction}>
           <Text style={{ color: "blue", fontWeight: '700' }}>{fieldButtonLabel}</Text>
