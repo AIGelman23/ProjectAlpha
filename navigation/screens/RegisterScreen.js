@@ -1,7 +1,9 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "../../styles/GlobalStyle";
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { MaterialIcons, Ionicons, AntDesign } from "@expo/vector-icons";
+import { InputField } from "../../components/input/InputField";
+import { LoginButton } from "../../components/buttons/LoginButton";
 
 export const RegisterScreen = ({ navigation }) => {
   return (
@@ -22,73 +24,62 @@ export const RegisterScreen = ({ navigation }) => {
         >
           Project Alpha Register
         </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            borderBottomColor: "#ccc",
-            borderBottomWidth: 1,
-            paddingBottom: 8,
-            margin: 20,
-            marginBottom: 25,
-          }}
-        >
-          <MaterialIcons
-            name="alternate-email"
-            size={20}
-            color="#666"
-            style={{ marginRight: 5 }}
-          />
-          <TextInput
-            placeholder="Email"
-            style={{ flex: 1, paddingVertical: 0 }}
-            keyboardType="email-address"
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            borderBottomColor: "#ccc",
-            borderBottomWidth: 1,
-            paddingBottom: 8,
-            margin: 20,
-            marginBottom: 25,
-          }}
-        >
-          <Ionicons
-            name="ios-lock-closed-outline"
-            size={20}
-            color="#666"
-            style={{ marginRight: 5 }}
-          />
-          <TextInput
-            placeholder="Password"
-            style={{ flex: 1, paddingVertical: 0 }}
-            secureTextEntry={true}
-          />
-        </View>
-        <TouchableOpacity
+        <InputField
+          label={"Full Name"}
+          icon={
+            <Ionicons
+              name="person-outline"
+              size={20}
+              color="#666"
+              style={{ marginRight: 5 }}
+            />
+          }
+        />
+        <InputField
+          label={"Email"}
+          icon={
+            <MaterialIcons
+              name="alternate-email"
+              size={20}
+              color="#666"
+              style={{ marginRight: 5 }}
+            />
+          }
+        />
+          <InputField
+          label={"Password"}
+          inputType="password"
+          icon={
+            <AntDesign
+              name="unlock"
+              size={20}
+              color="#666"
+              style={{ marginRight: 5 }}
+            />
+          }
+        />
+          <InputField
+          label={"Confirm Password"}
+          inputType="password"
+          icon={
+            <AntDesign 
+              name="unlock"
+              size={20}
+              color="#666"
+              style={{ marginRight: 5 }}
+            />
+          }
+        />
+        <LoginButton 
+          label={"Register"}
           onPress={() => {}}
+        />
+        <View
           style={{
-            backgroundColor: "blue",
-            padding: 15,
-            borderRadius: 20,
-            marginBottom: 30,
+            flexDirection: "row",
+            justifyContent: "center",
           }}
         >
-          <Text
-            style={{
-              textAlign: "center",
-              fontWeight: "700",
-              fontSize: 16,
-              color: "#fff",
-            }}
-          >
-            Register
-          </Text>
-        </TouchableOpacity>
-        <View style={{ 
-            flexDirection: "row", 
-            justifyContent: "center" }}>
           <Text
             style={{
               textAlign: "center",
@@ -98,10 +89,7 @@ export const RegisterScreen = ({ navigation }) => {
           >
             Already Registered?
           </Text>
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={{}}
-          >
+          <TouchableOpacity onPress={() => navigation.goBack()} style={{}}>
             <Text style={{ color: "blue", fontWeight: "700" }}> Login</Text>
           </TouchableOpacity>
         </View>

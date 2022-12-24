@@ -1,7 +1,10 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "../../styles/GlobalStyle";
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { MaterialIcons, AntDesign } from "@expo/vector-icons";
+import { InputField } from "../../components/input/InputField";
+import { LoginButton } from "../../components/buttons/LoginButton";
+import SVGImg from "../../assets/images/svgs/alpha.svg";
 
 export const LoginScreen = ({ navigation }) => {
   return (
@@ -13,6 +16,7 @@ export const LoginScreen = ({ navigation }) => {
           alignItems: "center",
         }}
       >
+      <SVGImg width={100} height={100} />
         <Text
           style={{
             fontFamily: "OpenSans-Regular",
@@ -22,73 +26,33 @@ export const LoginScreen = ({ navigation }) => {
         >
           Project Alpha Login
         </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            borderBottomColor: "#ccc",
-            borderBottomWidth: 1,
-            paddingBottom: 8,
-            margin: 20,
-            marginBottom: 25,
-          }}
-        >
-          <MaterialIcons
+        <InputField   
+          label={"Email"}
+          icon={<MaterialIcons 
             name="alternate-email"
             size={20}
             color="#666"
             style={{ marginRight: 5 }}
-          />
-          <TextInput
-            placeholder="Email"
-            style={{ flex: 1, paddingVertical: 0 }}
-            keyboardType="email-address"
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            borderBottomColor: "#ccc",
-            borderBottomWidth: 1,
-            paddingBottom: 8,
-            margin: 20,
-            marginBottom: 25,
-          }}
-        >
-          <Ionicons
-            name="ios-lock-closed-outline"
-            size={20}
-            color="#666"
-            style={{ marginRight: 5 }}
-          />
-          <TextInput
-            placeholder="Password"
-            style={{ flex: 1, paddingVertical: 0 }}
-            secureTextEntry={true}
-          />
-          <TouchableOpacity onPress={() => {}}>
-            <Text style={{ color: "#700" }}>Forgot?</Text>
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity
-          onPress={() => {}}
-          style={{
-            backgroundColor: "blue",
-            padding: 15,
-            borderRadius: 20,
-            marginBottom: 30,
-          }}
-        >
-          <Text
-            style={{
-              textAlign: "center",
-              fontWeight: "700",
-              fontSize: 16,
-              color: "#fff",
-            }}
-          >
-            Login
-          </Text>
-        </TouchableOpacity>
+          />}
+        />
+        <InputField
+          label={"Password"}
+          inputType="password"
+          icon={
+            <AntDesign 
+              name="lock"
+              size={20}
+              color="#666"
+              style={{ marginRight: 5 }}
+            />
+          }
+          fieldButtonLabel={"Forgot?"}
+          fieldButtonFunction={() => {}}
+        />
+        <LoginButton 
+          label={"Login"}
+          onPress={() => navigation.navigate("Home")}
+        />
         <View style={{ 
             flexDirection: "row", 
             justifyContent: "center" }}>
