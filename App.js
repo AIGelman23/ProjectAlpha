@@ -1,15 +1,12 @@
-import React, { useCallback} from "react";
+import React, {useCallback} from "react";
 import { useFonts } from "expo-font";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-import { AuthStack } from "./navigation/AuthStack";
-import { AppStack } from "./navigation/AppStack";
+import { AuthProvider } from "./context/AuthContext";
+import { AppNav } from "./navigation/AppNav";
 
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    'OpenSans-Regular': require('./assets/fonts/OpenSans-Regular.ttf'),
+    "OpenSans-Regular": require("./assets/fonts/OpenSans-Regular.ttf"),
   });
 
   useCallback(async () => {
@@ -23,9 +20,8 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      {/* <AppStack /> */}
-      <AuthStack />
-    </NavigationContainer>
+    <AuthProvider>
+      <AppNav />
+    </AuthProvider>
   );
 }
