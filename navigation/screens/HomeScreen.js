@@ -1,5 +1,6 @@
-import React from "react";
-import { FlatList, Text } from "react-native";
+import React, {useContext} from "react";
+import { FlatList, Text, TouchableOpacity } from "react-native";
+import { AuthContext } from "../../context/AuthContext";
 import { SafeAreaView } from "../../styles/GlobalStyle";
 import { CardPost } from "../../components/cards/CardPost";
 
@@ -31,11 +32,15 @@ const Posts = [
   },
 ];
 
+
+
 export const HomeScreen = ({ route, navigation }) => {
+
+  const {logout} = useContext(AuthContext);
 
   return (
     <SafeAreaView>
-     {/* <Text style={{ fontFamily: 'Inter-Black', fontSize: 30 }}>Inter Black</Text> */}
+    <TouchableOpacity onPress={() => {logout()}}><Text>LOG OUT</Text></TouchableOpacity>
       <FlatList
         data={Posts}
         renderItem={(post) => <CardPost post={post} />}
