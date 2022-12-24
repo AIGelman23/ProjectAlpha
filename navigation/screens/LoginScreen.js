@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext, useState} from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "../../styles/GlobalStyle";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
@@ -7,6 +8,9 @@ import { LoginButton } from "../../components/buttons/LoginButton";
 import SVGImg from "../../assets/images/svgs/alpha.svg";
 
 export const LoginScreen = ({ navigation }) => {
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const {login} = useContext(AuthContext);
   return (
     <SafeAreaView>
       <View
@@ -34,6 +38,8 @@ export const LoginScreen = ({ navigation }) => {
             color="#666"
             style={{ marginRight: 5 }}
           />}
+          value={email}
+          onChangeText={(text) => setEmail(text)}
         />
         <InputField
           label={"Password"}
@@ -46,12 +52,16 @@ export const LoginScreen = ({ navigation }) => {
               style={{ marginRight: 5 }}
             />
           }
+          value={password}
+          onChangeText={(text) => setPassword(text)}
           fieldButtonLabel={"Forgot?"}
           fieldButtonFunction={() => {}}
         />
         <LoginButton 
           label={"Login"}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => {
+            login(email, password);
+          }}
         />
         <View style={{ 
             flexDirection: "row", 
