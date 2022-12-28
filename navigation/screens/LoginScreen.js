@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { View, Text, TouchableOpacity } from "react-native";
-import { SafeAreaView } from "../../styles/GlobalStyle";
+import { SafeAreaView, ViewWrapper } from "../../styles/GlobalStyle";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 import { InputField } from "../../components/input/InputField";
 import { LoginButton } from "../../components/buttons/LoginButton";
@@ -13,13 +13,7 @@ export const LoginScreen = ({ navigation }) => {
   const {login} = useContext(AuthContext);
   return (
     <SafeAreaView>
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <ViewWrapper>
       <SVGImg width={100} height={100} />
         <Text
           style={{
@@ -79,10 +73,10 @@ export const LoginScreen = ({ navigation }) => {
             onPress={() => navigation.navigate("Register")}
             style={{}}
           >
-            <Text style={{ color: "blue", fontWeight: "700" }}> Register</Text>
+            <Text> Register</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ViewWrapper>
     </SafeAreaView>
   );
 };
