@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { TextInput, TextInputContainer, FieldLabel, FieldButton } from "../../styles/GlobalStyle";
 
 export const InputField = ({
   label,
@@ -12,16 +12,7 @@ export const InputField = ({
   onChangeText,
 }) => {
   return (
-      <View
-        style={{
-          flexDirection: "row",
-          borderBottomColor: "#ccc",
-          borderBottomWidth: 1,
-          paddingBottom: 8,
-          margin: 20,
-          marginBottom: 25,
-        }}
-      >
+      <TextInputContainer>
         {icon}
         {inputType === "password" ? (
           <TextInput
@@ -41,9 +32,9 @@ export const InputField = ({
             onChangeText={onChangeText}
           />
         )}
-        <TouchableOpacity onPress={fieldButtonFunction}>
-          <Text style={{ color: "blue", fontWeight: '700' }}>{fieldButtonLabel}</Text>
-        </TouchableOpacity>
-      </View>
+        <FieldButton onPress={fieldButtonFunction}>
+          <FieldLabel>{fieldButtonLabel}</FieldLabel>
+        </FieldButton>
+      </TextInputContainer>
   );
 };
