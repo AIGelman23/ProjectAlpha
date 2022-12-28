@@ -5,6 +5,12 @@ export const SafeAreaView = styled.SafeAreaView`
   background-color: #fff;
 `;
 
+export const ViewWrapper = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  `;
+
 export const Card = styled.View`
   background-color: #f8f8f8;
   border-radius: 35px;
@@ -24,7 +30,7 @@ export const PostContainer = styled.View`
 export const PostText = styled.Text`
   padding-left: 15px;
   padding-right: 15px;
-  font-family: 'OpenSans-Regular';
+  font-family: "OpenSans-Regular";
   font-size: 14px;
 `;
 
@@ -34,6 +40,42 @@ export const PostImg = styled.Image`
   margin-top: 15px;
 `;
 
-export const Header = styled.View`
-  height: 100px;
+export const TextInput = styled.TextInput`
+backgroundColor: #fff;
 `;
+
+export const TextInputContainer = styled.View`
+  flex-direction: row;
+  align-items: center;;
+  margin-horizontal: 40px;
+  margin-vertical: 10px;
+  padding-horizontal: 30px;
+  border: 1px solid #ccc;
+  height: 45px;
+  border-radius: 65px;
+  background-color: #fff;
+`;
+
+export const FieldButton = styled.TouchableOpacity`
+  margin-left: 10px;
+`;
+
+export const FieldLabel = styled.Text`
+  color: blue; 
+  font-weight: 700;
+`;
+
+export const AuthButton = styled.TouchableOpacity`
+  backgroundColor: blue;
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+`;
+
+export const AuthButtonLabel = styled.Text`
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+`;
+
