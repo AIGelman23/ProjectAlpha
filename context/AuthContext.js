@@ -1,7 +1,8 @@
+import axios from "axios";
 import React, { createContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
-
+import { authenticateUser } from "../api/auth/authUser";
+import { jwtInterceptor } from "../api/axios/axios";
 import { BASE_URL } from "../api/config";
 
 export const AuthContext = createContext();
@@ -11,40 +12,29 @@ export const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
 
+  axios.interceptors.request.use((request) => {
+    const isLoggedIn = userInfo.data?.token;
+    const isApiUrl = request.url.startsWith(BASE_URL);
+
+    if (isLoggedIn && isApiUrl) {
+      request.headers.Authorization = `Bearer ${userInfo.data.token}`;
+    }
+
+    return request;
+  });
+
+
   const login = (username, password) => {
     setIsLoading(true);
 
-    axios.interceptors.request.use((request) => {
-      const isLoggedIn = userInfo.data?.token;
-      const isApiUrl = request.url.startsWith(BASE_URL);
+    authenticateUser(
+      username,
+      password,
+      AsyncStorage,
+      setUserInfo,
+      setUserToken
+    );
 
-      if (isLoggedIn && isApiUrl) {
-        request.headers.Authorization = `Bearer ${userInfo.data.token}`;
-      }
-
-      console.log("sdsdsd ====" + JSON.stringify(request));
-
-      return request;
-    });
-
-    axios
-      .post(`${BASE_URL}/sessions/create`, {
-        username,
-        password,
-      })
-      .then((res) => {
-        let userInfo = res.data;
-        setUserInfo(userInfo);
-        setUserToken(userInfo.data.token);
-        AsyncStorage.setItem("userInfo", JSON.stringify(userInfo));
-        AsyncStorage.setItem("userToken", userInfo.data.token);
-        console.log(res.data);
-        console.log("User Token:" + userInfo.data.token);
-      })
-      .catch((err) => {
-        console.log("Login Error:" + err);
-      });
-    // setUserToken('asdf');
     setIsLoading(false);
   };
 
@@ -80,7 +70,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, logout, isLoading, userToken }}>
+    <AuthContext.Provider
+      value={{ login, logout, isLoading, userToken, userInfo }}
+    >
       {children}
     </AuthContext.Provider>
   );
