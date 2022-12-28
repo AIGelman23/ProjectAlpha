@@ -8,27 +8,27 @@ const Posts = [
   {
     id: "1",
     title: "Picture Title 1",
-    postImg: { uri: "https://via.placeholder.com/120/0000FF" },
+    postImg: { uri: "https://placedog.net/640/480?random" },
   },
   {
     id: "2",
     title: "Picture Title 2",
-    postImg: { uri: "https://via.placeholder.com/120/EFEFEF" },
+    postImg: { uri: "https://placedog.net/640/480?random" },
   },
   {
     id: "3",
     title: "Picture Title 3",
-    postImg: { uri: "https://via.placeholder.com/120/FFFF00" },
+    postImg: { uri: "https://placedog.net/640/480?random" },
   },
   {
     id: "4",
     title: "Picture Title 4",
-    postImg: { uri: "https://via.placeholder.com/120/FF0000" },
+    postImg: { uri: "https://placedog.net/640/480?random" },
   },
   {
     id: "5",
     title: "Picture Title 6",
-    postImg: { uri: "https://via.placeholder.com/120/00FF00" },
+    postImg: { uri: "https://placedog.net/640/480?random" },
   },
 ];
 
